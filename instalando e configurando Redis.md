@@ -1,51 +1,6 @@
 Instalado e configurando REDIS
 ====
 
-Arquivo baixado do site do Redis onde é o arquivo de configuração que será mencionado no tutorial como `utils/redis_init_script`:
-
-	#!/bin/sh
-	#
-	# Simple Redis init.d script conceived to work on Linux systems
-	# as it does use of the /proc filesystem.
-	
-	REDISPORT=6379
-	EXEC=/usr/local/bin/redis-server
-	CLIEXEC=/usr/local/bin/redis-cli
-	
-	PIDFILE=/var/run/redis_${REDISPORT}.pid
-	CONF="/etc/redis/${REDISPORT}.conf"
-	
-	case "$1" in
-	    start)
-	        if [ -f $PIDFILE ]
-	        then
-	                echo "$PIDFILE exists, process is already running or crashed"
-	        else
-	                echo "Starting Redis server..."
-	                $EXEC $CONF
-	        fi
-	        ;;
-	    stop)
-	        if [ ! -f $PIDFILE ]
-	        then
-	                echo "$PIDFILE does not exist, process is not running"
-	        else
-	                PID=$(cat $PIDFILE)
-	                echo "Stopping ..."
-	                $CLIEXEC -p $REDISPORT shutdown
-	                while [ -x /proc/${PID} ]
-	                do
-	                    echo "Waiting for Redis to shutdown ..."
-	                    sleep 1
-	                done
-	                echo "Redis stopped"
-	        fi
-	        ;;
-	    *)
-	        echo "Please use start or stop as first argument"
-	        ;;
-	esac
-
 1. Instalando a versão mais recente do Redis
 
 		~$ sudo add-apt-repository ppa:chris-lea/redis-server
@@ -63,7 +18,54 @@ Arquivo baixado do site do Redis onde é o arquivo de configuração que será m
 Segundo a documentação do Redis, eles indicam criar o arquivo com o nome da porta que você irá utilizar para acesso ao Redis (padrão 6379)
 
 		~$ sudo nano /etc/init.d/redis_6379
-		# Coloque o conteúdo do script citando no inicio desse manual dentro deste arquivo recém criado.
+		# Coloque script a baixo
+	Arquivo baixado do site do Redis onde é o arquivo de configuração que será mencionado no tutorial como `utils/redis_init_script`:
+
+		#!/bin/sh
+		#
+		# Simple Redis init.d script conceived to work on Linux systems
+		# as it does use of the /proc filesystem.
+		
+		REDISPORT=6379
+		EXEC=/usr/bin/redis-server
+		CLIEXEC=/usr/bin/redis-cli
+		
+		PIDFILE=/var/run/redis_${REDISPORT}.pid
+		CONF="/etc/redis/${REDISPORT}.conf"
+		
+		case "$1" in
+		    start)
+		        if [ -f $PIDFILE ]
+		        then
+		                echo "$PIDFILE exists, process is already running or crashed"
+		        else
+		                echo "Starting Redis server..."
+		                $EXEC $CONF
+		        fi
+		        ;;
+		    stop)
+		        if [ ! -f $PIDFILE ]
+		        then
+		                echo "$PIDFILE does not exist, process is not running"
+		        else
+		                PID=$(cat $PIDFILE)
+		                echo "Stopping ..."
+		                $CLIEXEC -p $REDISPORT shutdown
+		                while [ -x /proc/${PID} ]
+		                do
+		                    echo "Waiting for Redis to shutdown ..."
+		                    sleep 1
+		                done
+		                echo "Redis stopped"
+		        fi
+		        ;;
+		    *)
+		        echo "Please use start or stop as first argument"
+		        ;;
+		esac
+	É necessário dar permissão de execução para o arquivo
+		
+		~$ sudo chmod 753 /etc/init.d/redis_6379
 3. Copie o arquivo de configuração do modelo que você vai encontrar no diretório raiz da distribuição Redis em  `/etc/redis/` usando o número da porta como o nome, por exemplo:
 
 		~$ sudo cp /etc/redis/redis.conf /etc/redis/6379.conf
