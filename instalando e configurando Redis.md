@@ -76,7 +76,7 @@ Segundo a documentação do Redis, eles indicam criar o arquivo com o nome da po
 			daemonize yes
 	- Setar o pidfile para `/var/run/redis_6379.pid` (mudar a porta se necessário).
 		
-			pidfile /var/run/redis/redis-server.pid
+			pidfile /var/run/redis_6379.pid
 	- Alterar a porta conforme sua configuração. No nosso exemplo, não é necessário, pois a porta padrão já é 6379.
 		
 			port 6379
