@@ -6,14 +6,6 @@ Instalado e configurando REDIS
 		~$ sudo add-apt-repository ppa:chris-lea/redis-server
 		~$ sudo apt-get update
 		~$ sudo apt-get install redis-server
-		
-		#Ou
-
-		~$ wget http://download.redis.io/redis-stable.tar.gz
-		~$ tar xvzf redis-stable.tar.gz
-		~$ cd redis-stable
-		~$ make
-		~$ make install
 2. Criar arquivo de inicialização
 Segundo a documentação do Redis, eles indicam criar o arquivo com o nome da porta que você irá utilizar para acesso ao Redis (padrão 6379)
 
