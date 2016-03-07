@@ -27,7 +27,7 @@ Segundo a documentação do Redis, eles indicam criar o arquivo com o nome da po
 		EXEC=/usr/bin/redis-server
 		CLIEXEC=/usr/bin/redis-cli
 		
-		PIDFILE=/var/run/redis_${REDISPORT}.pid
+		PIDFILE=/var/run/redis-${REDISPORT}.pid
 		CONF="/etc/redis/${REDISPORT}.conf"
 		
 		case "$1" in
