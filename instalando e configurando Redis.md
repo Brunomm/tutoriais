@@ -55,8 +55,12 @@ Segundo a documentação do Redis, eles indicam criar o arquivo com o nome da po
 		                echo "Redis stopped"
 		        fi
 		        ;;
+		    restart|force-reload)
+		        ${0} stop
+		        ${0} start
+		        ;;
 		    *)
-		        echo "Please use start or stop as first argument"
+		        echo "Please use start|stop|restart as first argument"
 		        ;;
 		esac
 	É necessário dar permissão de execução para o arquivo
