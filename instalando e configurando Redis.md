@@ -5,6 +5,7 @@ Instalado e configurando REDIS
 
 		~$ sudo add-apt-repository ppa:chris-lea/redis-server
 		~$ sudo apt-get update
+		~$ sudo apt-get install build-essential --quiet --yes
 		~$ sudo apt-get install redis-server
 	Com essa instalação pelo `apt-get` é criado um inicializador automatico do redis em `/etc/inid.d` e também o redis é automaticamente iniciado. É necessário parar o serviço e depois remover o arquivo de inicialização padrão.
 		
