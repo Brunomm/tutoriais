@@ -89,7 +89,7 @@ Caso o link da Linode não esteja mais disponível, pode ser baixado [aqui.](htt
 		~$ sudo service nginx restart
 
 
-## EM MEU COMPUTADOR 
+## EM MEU COMPUTADOR (Opcional)
  Para poder acessar a aplicação em um servidor local ou em uma vm
  Fazer o seguinte:
 
@@ -101,10 +101,12 @@ Caso o link da Linode não esteja mais disponível, pode ser baixado [aqui.](htt
 2. Editar o arquivo de configuração do dnsmasq para redirecionar o meu endereço para o IP que desejar
 
 		~$ sudo nano /etc/dnsmasq.conf
-
-3. Adicionar no fim do arquivo: 
-
+	No fim do arquivo adicione o seguinte:
+	
 		address=/vm-myapp.com/IP.DA.MINHA.APP
+
+3. Reiniciar o dnsmasq:
+		
 		~$ sudo /etc/init.d/dnsmasq restart
 
 
