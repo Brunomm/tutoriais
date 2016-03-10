@@ -98,9 +98,16 @@ Segundo a documentação do Redis, eles indicam criar o arquivo com o nome da po
 6. Por fim, adicione o script de inicialização do redis, paraque seja iniciado automaticamente quando o servidor ligar.
 			
 		~$ sudo update-rc.d redis-6379 defaults
-7. Você terminou! Agora você pode tentar executar o seu exemplo, com:
+7. Agora você pode tentar executar o seu exemplo, com:
 		
 		~$ sudo /etc/init.d/redis-6379 start
+8. Editar arquivo `/etc/sysctl.conf` e colocar no final o valor `vm.overcommit_memory=1`
+		
+		~$ sudo vi /etc/sysctl.conf
+		
+		# Adicionar o valor
+		vm.overcommit_memory=1
+	Agora você pode reiniciar o servidor ou executar `sysctl vm.overcommit_memory=1`  no console.
 
 > **IMPORTANTE**
 > Caso você queira modificar algum diretório do que foi descrito neste manual, lembre-se que é necessário mudar também no script de inicialização descrito no início deste manual. Veja a baixo o que é necessário modificar caso não seja seguido o padrão deste manual:
