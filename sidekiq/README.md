@@ -10,6 +10,9 @@ Configuração para o Sidekiq iniciar automaticamente com o ubuntu utilizando o 
 	Criar arquivo `/etc/init/workers.conf` e coloque o conteúdo [deste arquivo](https://github.com/Brunomm/tutoriais/blob/master/sidekiq/workers.conf).
 	Modifique a variável `NUM_WORKERS` para o numero de processos que você deseja executar. Normalmente é executado 1 processo para cada core da CPU.
 	
+	
+	
+Para evr log do sistema utilize `tail -f /var/log/syslog`
 ---------------
 
 Fonte: https://github.com/mperham/sidekiq/wiki/Deploying-to-Ubuntu
