@@ -26,7 +26,7 @@
 4.Criando o diretório da app e adicionado permissoes
 
 		~$ mkdir  /caminho/da/aplicacao
-		~$ sudo chown -R duobr:deployers /caminho/da/aplicacao
+		~$ sudo chown -R NOME-DO-USUARIO:deployers /caminho/da/aplicacao
 		~$ sudo chmod -R g+w  /caminho/da/aplicacao
 		~$ ssh-keygen -t rsa -C "email@email.com.br"
 		# Copiar a chave gerada para o github/gitlab
@@ -56,7 +56,7 @@ para configurar novas aplicações Rails, no mesmo arquivo configure da seguinte
 
 		server {
 			listen 80;
-			erver_name localhost;
+			server_name localhost;
 			root /somewhere/public; # <--- Caminho do public da aplicação!
 			passenger_enabled on;
 		}
